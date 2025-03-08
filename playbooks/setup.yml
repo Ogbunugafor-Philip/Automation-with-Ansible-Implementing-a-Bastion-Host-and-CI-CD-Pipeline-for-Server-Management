@@ -1,0 +1,21 @@
+---
+- name: Setup Web and DB Servers
+  hosts: all
+  become: yes  
+  tasks:
+  
+    - name: Update package lists
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx on Web Servers
+      apt:
+        name: nginx
+        state: present
+      when: "'webservers' in group_names"
+
+    - name: Install MySQL on DB Server
+      apt:
+        name: mysql-server
+        state: present
+      when: "'dbservers' in group_names"

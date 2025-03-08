@@ -5,15 +5,17 @@ all:
         webserver01:
           ansible_host: 172.31.27.45
           ansible_user: ubuntu
-          ansible_ssh_private_key_file: ~/.ssh/DVops.pem
+          ansible_ssh_private_key_file: /home/ubuntu/.ssh/DVops.pem
         webserver02:
           ansible_host: 172.31.23.121
           ansible_user: ubuntu
-          ansible_ssh_private_key_file: ~/.ssh/DVops.pem
+          ansible_ssh_private_key_file: /home/ubuntu/.ssh/DVops.pem
     dbservers:
       hosts:
         dbserver:
           ansible_host: 172.31.28.248
           ansible_user: ubuntu
-          ansible_ssh_private_key_file: ~/.ssh/DVops.pem
+          ansible_ssh_private_key_file: /home/ubuntu/.ssh/DVops.pem
+
+
 
