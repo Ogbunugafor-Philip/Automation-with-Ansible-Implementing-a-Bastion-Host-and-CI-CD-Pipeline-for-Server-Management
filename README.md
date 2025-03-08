@@ -308,16 +308,20 @@ ssh into one of the web servers. Run;
 ssh -i ~/.ssh/DVops.pem ubuntu@172.31.27.45
 ```
 - Confirm nginx is installed. Run;
-``sh
+```sh
 nginx -v
-``
+```
 ![Image](https://github.com/user-attachments/assets/03f8e9cd-0790-441e-bc20-457696b14791)
 
 - Next, ssh into the db server and confirm mysql is installed. Run;
-``sh
+```sh
 ssh -i ~/.ssh/DVops.pem ubuntu@172.31.28.248
+```
+- Next, confirm mysql version
+```sh
 mysql –version
-``
+```
+![Image](https://github.com/user-attachments/assets/03cd9c2f-7ce9-4654-96f1-658cb8b46215)
 
 Conclusion
 This project successfully implemented secure infrastructure automation using Ansible as a Jump Server (Bastion Host), combined with Jenkins and GitHub for CI/CD-driven deployment.
