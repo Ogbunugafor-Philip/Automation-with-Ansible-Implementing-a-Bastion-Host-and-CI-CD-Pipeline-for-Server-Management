@@ -1,26 +1,27 @@
 ## Automation with Ansible: Implementing a Bastion Host and CI/CD Pipeline for Server Management
+![Image](https://github.com/user-attachments/assets/12f032d8-ce26-4eb7-a353-0c93c1cce7f5)
 
 ### Introduction
 This project focuses on implementing a secure and automated infrastructure management solution using Ansible as a Jump Server (Bastion Host). A Bastion Host acts as an intermediary server that provides controlled access to private network resources, improving security by preventing direct access to internal servers. By deploying Ansible on a Jenkins-Ansible EC2 instance, we automate server configurations and management tasks using playbooks. Additionally, GitHub and Jenkins are integrated to create a CI/CD pipeline, ensuring seamless deployment of infrastructure changes.
 This project enhances security, automation, and efficiency, making it an essential practice for managing cloud infrastructure in a DevOps environment.
 
-Project Objectives
+### Project Objectives
 - To set up a Secure Bastion Host using an Ansible Jump Server for controlled access to private servers.
 - To automate Server Configurations with Ansible playbooks for web, database, and load balancer servers.
 - To integrate CI/CD Pipeline by linking Jenkins and GitHub for automated deployment of Ansible configurations.
 - To organize Ansible Inventory to manage different environments like Development, Staging, user application testing (UAT), and Production.
 - To test and Validate Automation by running Ansible playbooks to ensure proper server configuration and updates.
 
-Project Steps
+### Project Steps
 1. Set Up Jenkins-Ansible Server
 2. Create and Configure GitHub Repository
 3. Integrate Jenkins with GitHub
 4. Set Up Ansible Inventory
 5. Develop Ansible Playbooks
 
-Project Implementation
+### Project Implementation
 
-Step 1: Set Up Jenkins-Ansible Server
+### Step 1: Set Up Jenkins-Ansible Server
 This step involves setting up a server that will act as both a Jenkins and Ansible control node. Jenkins is an automation server for CI/CD, while an Ansible Control Node is a machine that runs Ansible to automate remote system management.
 - Spin up an Ubuntu Server. Go to AWS Console → EC2 → Launch Instance
 - Note the below when launching the instance:
@@ -123,7 +124,7 @@ Host jenkins-ansible
     ![Image](https://github.com/user-attachments/assets/7dea8899-a531-4d68-9a60-2cbd042ad63c)
   
 
-Step 2: Create and Configure GitHub Repository
+### Step 2: Create and Configure GitHub Repository
 In this step, we'll set up a GitHub repository to store Ansible configurations and playbooks. This will allow us to track changes, collaborate, and integrate with Jenkins for automation.
 
 - Create a GitHub repository `ansible-config-mgt`
@@ -164,7 +165,7 @@ ls -R
   git push origin main
   ```
 
-Step 3: Integrate Jenkins with GitHub
+### Step 3: Integrate Jenkins with GitHub
 In this step, we will connect Jenkins to our GitHub repository so that Jenkins can automatically trigger builds when changes are pushed to the repository.
 - We would first Install Git Plugin in Jenkins. To do that;
   Log in to your Jenkins web interface.
@@ -211,7 +212,7 @@ http://35.153.34.243:8080/github-webhook/
 
   
 
-Step 4: Set Up Ansible Inventory
+### Step 4: Set Up Ansible Inventory
 An Ansible inventory file defines the hosts and groups of hosts upon which commands, modules, and tasks in a playbook operate. Since our intention is to execute Linux commands on remote hosts, and ensure that it is the intended configuration on a particular server that occurs. It is important to have a way to organize our hosts in such an Inventory.
 
 - Create an inventory file:
@@ -219,7 +220,7 @@ An Ansible inventory file defines the hosts and groups of hosts upon which comma
   cd inventory
   touch host.yml
   ```
-- 	We have 3 server (2 webservers and 1 database server) that we want to manage. When managing servers on same VPC, use Private IP but if servers are on different VPC, use Public IP.
+- We have 3 server (2 webservers and 1 database server) that we want to manage. When managing servers on same VPC, use Private IP but if servers are on different VPC, use Public IP.
 Paste the below in your host.yml
 ```sh
 all:
@@ -249,7 +250,7 @@ all:
   ```
   ![Image](https://github.com/user-attachments/assets/979a8832-3ce0-4658-bb9e-ebacac02b6ac)
 
-Step 5: Develop Ansible Playbooks
+### Step 5: Develop Ansible Playbooks
 Next, we would develop an Ansible Playbook. An Ansible Playbook is a YAML file that contains a set of tasks that Ansible executes on remote servers. Instead of running individual commands, you define the desired system state, and Ansible ensures that the servers match that state.
 Basically, an ansible playbook has this structure;
 A basic Ansible playbook has:
@@ -323,7 +324,7 @@ mysql –version
 ```
 ![Image](https://github.com/user-attachments/assets/03cd9c2f-7ce9-4654-96f1-658cb8b46215)
 
-Conclusion
+### Conclusion
 This project successfully implemented secure infrastructure automation using Ansible as a Jump Server (Bastion Host), combined with Jenkins and GitHub for CI/CD-driven deployment.
 By setting up an Ansible-based Bastion Host, we ensured controlled and secure access to private servers, preventing unauthorized access while centralizing automation.
 Through Jenkins integration, Ansible configurations are automatically deployed whenever updates are pushed to GitHub, ensuring a continuous and seamless deployment pipeline.
